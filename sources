@@ -1,0 +1,21 @@
+TARGETNAME=WdfRamdisk
+TARGETTYPE=DRIVER
+
+MSC_WARNING_LEVEL=/W4 /WX
+
+
+KMDF_VERSION_MAJOR=1
+
+TARGETLIBS=$(TARGETLIBS) \
+           $(DDK_LIB_PATH)\ntstrsafe.lib
+
+INF_NAME=ramdisk
+NTTARGETFILE0=$(OBJ_PATH)\$(O)\$(INF_NAME).inf
+PASS0_BINPLACE=$(NTTARGETFILE0)
+
+SOURCES=ramdisk.c \
+        forward_progress.c \
+        ramdisk.rc
+
+TARGET_DESTINATION=wdf
+
